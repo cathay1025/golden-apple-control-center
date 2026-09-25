@@ -6,7 +6,6 @@
 <title>Golden APPLE 中控台</title>
 <link rel="icon" href="logo.png">
 <style>html{color-scheme:light}img{max-width:100%}[hidden]{display:none!important}</style>
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
 <style>
 :root{
@@ -50,13 +49,12 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 .card .f{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding-top:8px;border-top:1px dashed var(--line)}
 .pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;letter-spacing:.08em;border:1px solid var(--line);color:var(--muted)}
 .pill.on{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.pill.warn{background:#F6E3C8;color:#9A6420;border-color:transparent}
 .pill.plan{background:var(--card2);color:var(--rose-deep);border-color:transparent}
-/* business unit blocks */
 .unit{background:var(--card2);border-radius:20px;padding:24px;margin-bottom:22px}
 .unit .uh{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap}
 .unit .uh .n{font-family:var(--serif);font-size:28px;color:var(--navy);font-weight:500}
 .unit .uh .s{font-size:13px;color:var(--muted)}
-/* pipeline */
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch;margin:6px 0 10px}
 @media (max-width:900px){.flow{grid-template-columns:1fr}}
 .step{position:relative;padding:0 14px 0 0}
@@ -68,14 +66,12 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 .step .num{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--rose-deep)}
 .step .out{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--card2);color:var(--ink);white-space:nowrap;display:inline-block}
-/* daily strip */
 .day{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
 @media (max-width:760px){.day{grid-template-columns:repeat(2,1fr)}}
 .day .slot{border-left:2px solid var(--rose);padding-left:12px}
 .day .slot .h{font-family:var(--serif);font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
 .day .slot .w{font-size:13px;margin-top:6px}
 .day .slot .who{font-size:11.5px;color:var(--muted)}
-/* employee page */
 .emp{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
 @media (max-width:760px){.emp{grid-template-columns:1fr}}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
@@ -118,7 +114,6 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
 </head>
 <body>
 
-
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 3v9l6 4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
   <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/><path d="M4 20l1-4"/><path d="M14 20h6"/></symbol>
@@ -129,7 +124,6 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   <symbol id="i-mega" viewBox="0 0 24 24"><path d="M4 10v4h3l7 4V6l-7 4z"/><path d="M17 9a4 4 0 010 6"/><path d="M6 14l1 5"/></symbol>
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4z"/><path d="M20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></symbol>
   <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 4a3 3 0 010 6"/><path d="M15 14a6 6 0 016 6"/></symbol>
-  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-4-3-9 0-8 6 1 5 4 8 6 8 1 0 2-1 2-1s1 1 2 1c2 0 5-3 6-8 1-6-4-9-8-6z"/><path d="M12 7c0-2 1-3 3-4"/></symbol>
 </svg>
 
 <header><div class="bar">
@@ -139,7 +133,6 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
 
 <div class="wrap">
 
-<!-- HOME -->
 <section class="view active" id="v-home">
   <div class="crumbs"><span class="cur">中控台</span></div>
   <h1>兩個事業體，四個部門</h1>
@@ -182,7 +175,6 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   </div>
 </section>
 
-<!-- DEPARTMENT: CONTENT -->
 <section class="view" id="v-content">
   <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#home">個人課程經營</a><span>/</span><span class="cur">內容部</span></div>
   <h1>內容部</h1>
@@ -238,7 +230,6 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   <p class="note">時段是建議值，等各環節員工上線後可以改成排程任務自動跑。</p>
 </section>
 
-<!-- EMPLOYEE: YT PLANNER -->
 <section class="view" id="v-yt-planner">
   <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#content">內容部</a><span>/</span><span class="cur">YT 影片企劃</span></div>
   <div class="hero">
@@ -280,7 +271,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="n" id="s-script">12</div><div class="l">講稿完成</div></div>
+    <div class="stat"><div class="n" id="s-script">0</div><div class="l">講稿定稿</div></div>
     <div class="stat"><div class="n" id="s-shot">0</div><div class="l">拍攝完成</div></div>
     <div class="stat"><div class="n" id="s-edit">0</div><div class="l">剪輯完成</div></div>
     <div class="stat"><div class="n" id="s-live">0</div><div class="l">已上架</div></div>
@@ -292,43 +283,52 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
       <tbody></tbody>
     </table>
   </div>
-  <p class="note">進度以 Notion 中控台為準，這一頁目前是快照。點影片名稱可直接開該支的講稿頁。</p>
+  <p class="note" id="updated">進度同步自 Notion。</p><p class="note">講稿欄是講稿狀態（草稿、待修、定稿），其他欄位是各環節的完成勾選。點影片名稱可直接開該支在 Notion 的講稿頁。</p>
 </section>
 
 <footer><span>Golden APPLE · 曾蘋果老師</span><span>內容部 v2</span></footer>
 </div>
 
 <script>
-const videos=[
- [1,"一句話說清楚妳是誰，三格公式加三個檢查","一句話定位公式加三個測試",["全部"],"3e6428c593f68189bbfefbe9cee4ea76"],
- [2,"自測，妳是哪一種個人品牌，選錯了怎麼講都沒人聽","三種 IP 自測",["全部"],"3e6428c593f68147899be88e22a767da"],
- [3,"為什麼妳的貼文沒人回，因為妳只對百分之三的人講話","買家金字塔，先教再賣",["全部"],"3e6428c593f68179b710ff75599ecced"],
- [4,"為什麼妳的課永遠只能收六百","價值公式加定價對話",["A","B","C"],"3e6428c593f681f6a630f3db84d46d3c"],
- [5,"不用投廣告，前十個客人從這四條路來","四條找客路加訊息結構",["A","D","E"],"3e6428c593f681dfb5c2f4538b89723a"],
- [6,"前三秒沒抓住就滑掉了，五種開頭公式加一個檢查","鉤住留住回報",["全部"],"3e6428c593f681348794e658d6da734f"],
- [7,"每週發什麼永遠想不出來，四種內容加一變十","做想夢人加一變十",["全部"],"3e6428c593f6819d81afd50010661285"],
- [8,"妳的故事講了沒人在聽，因為妳把自己講成了主角","StoryBrand 七步",["全部"],"3e6428c593f68167bd22de2aee416214"],
- [9,"專業人士做內容不俗氣的三條規則，還有四種證據怎麼排","三規則加四種證據",["C"],"3e6428c593f681d89518eac613ca49b5"],
- [10,"妳的第二收入早就在手上，兩張清單加一座階梯","技能疊加加價值階梯",["B","F"],"3e6428c593f681da83a1e284408d940d"],
- [11,"白天工作晚上備課，一週五小時做品牌的排法","只碰一次加批次拍攝",["A","B"],"3e6428c593f681f58532f4589196d6c0"],
- [12,"我這個年紀還來得及嗎，十個自查加一個順序","十種毒加先是再做再有",["F"],"3e6428c593f681159583dc44f7d82c4b"]
-];
-const progress={};videos.forEach(v=>progress[v[0]]=[1,0,0,0,0,0]);
-const tb=document.querySelector('#videos tbody');
+const fallback={updated:"2026/09/25 快照",videos:[
+ {n:1,title:"一句話說清楚妳是誰，三格公式加三個檢查",framework:"一句話定位公式加三個測試",groups:["全部"],id:"3e6428c593f68189bbfefbe9cee4ea76",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:2,title:"自測，妳是哪一種個人品牌，選錯了怎麼講都沒人聽",framework:"三種 IP 自測",groups:["全部"],id:"3e6428c593f68147899be88e22a767da",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:3,title:"為什麼妳的貼文沒人回，因為妳只對百分之三的人講話",framework:"買家金字塔，先教再賣",groups:["全部"],id:"3e6428c593f68179b710ff75599ecced",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:4,title:"為什麼妳的課永遠只能收六百",framework:"價值公式加定價對話",groups:["A 一人工作室","B 才藝補教","C 專業證照"],id:"3e6428c593f681f6a630f3db84d46d3c",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:5,title:"不用投廣告，前十個客人從這四條路來",framework:"四條找客路加訊息結構",groups:["A 一人工作室","D 業務通路","E 實體店"],id:"3e6428c593f681dfb5c2f4538b89723a",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:6,title:"前三秒沒抓住就滑掉了，五種開頭公式加一個檢查",framework:"鉤住留住回報",groups:["全部"],id:"3e6428c593f681348794e658d6da734f",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:7,title:"每週發什麼永遠想不出來，四種內容加一變十",framework:"做想夢人加一變十",groups:["全部"],id:"3e6428c593f6819d81afd50010661285",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:8,title:"妳的故事講了沒人在聽，因為妳把自己講成了主角",framework:"StoryBrand 七步",groups:["全部"],id:"3e6428c593f68167bd22de2aee416214",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:9,title:"專業人士做內容不俗氣的三條規則，還有四種證據怎麼排",framework:"三規則加四種證據",groups:["C 專業證照"],id:"3e6428c593f681d89518eac613ca49b5",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:10,title:"妳的第二收入早就在手上，兩張清單加一座階梯",framework:"技能疊加加價值階梯",groups:["B 才藝補教","F 轉型中"],id:"3e6428c593f681da83a1e284408d940d",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:11,title:"白天工作晚上備課，一週五小時做品牌的排法",framework:"只碰一次加批次拍攝",groups:["A 一人工作室","B 才藝補教"],id:"3e6428c593f681f58532f4589196d6c0",scriptState:"草稿",flags:[1,0,0,0,0,0]},
+ {n:12,title:"我這個年紀還來得及嗎，十個自查加一個順序",framework:"十種毒加先是再做再有",groups:["F 轉型中"],id:"3e6428c593f681159583dc44f7d82c4b",scriptState:"草稿",flags:[1,0,0,0,0,0]}
+]};
 const dot=v=>`<span class="dot${v?' on':''}"></span>`;
-videos.forEach(([n,t,f,g,id])=>{
-  const p=progress[n];const tr=document.createElement('tr');
-  tr.innerHTML=`<td class="num">${String(n).padStart(2,'0')}</td>
-  <td class="title"><a href="https://app.notion.com/p/${id}" target="_blank" rel="noopener">${t}</a><small>${f}</small></td>
-  <td>${g.map(x=>`<span class="tag">${x}</span>`).join(' ')}</td>
-  <td class="c">${dot(p[0])}</td><td class="c">${dot(p[1])}</td><td class="c">${dot(p[2])}</td><td class="c">${dot(p[3])}</td><td class="c">${dot(p[4])}</td><td class="c">${dot(p[5])}</td>`;
-  tb.appendChild(tr);
-});
-const sum=i=>Object.values(progress).reduce((a,p)=>a+p[i],0);
-document.getElementById('s-script').textContent=sum(0);
-document.getElementById('s-shot').textContent=sum(1);
-document.getElementById('s-edit').textContent=sum(2);
-document.getElementById('s-live').textContent=sum(5);
+const stateCls={草稿:'',待修:'warn',定稿:'on'};
+function render(data){
+  const tb=document.querySelector('#videos tbody');tb.innerHTML='';
+  const vids=[...data.videos].sort((a,b)=>a.n-b.n);
+  vids.forEach(v=>{
+    const g=(v.groups||[]).map(x=>x.replace(/^([A-F]) .*/,'$1'));
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="num">${String(v.n).padStart(2,'0')}</td>
+    <td class="title"><a href="https://app.notion.com/p/${v.id}" target="_blank" rel="noopener">${v.title}</a><small>${v.framework||''}</small></td>
+    <td>${g.map(x=>`<span class="tag">${x}</span>`).join(' ')}</td>
+    <td class="c"><span class="pill ${stateCls[v.scriptState]||''}">${v.scriptState||'草稿'}</span></td>
+    <td class="c">${dot(v.flags[1])}</td><td class="c">${dot(v.flags[2])}</td><td class="c">${dot(v.flags[3])}</td><td class="c">${dot(v.flags[4])}</td>
+    <td class="c">${v.youtube?`<a href="${v.youtube}" target="_blank" rel="noopener">${dot(1)}</a>`:dot(v.flags[5])}</td>`;
+    tb.appendChild(tr);
+  });
+  const sum=i=>vids.reduce((a,v)=>a+(v.flags[i]?1:0),0);
+  document.getElementById('s-script').textContent=vids.filter(v=>v.scriptState==='定稿').length;
+  document.getElementById('s-shot').textContent=sum(1);
+  document.getElementById('s-edit').textContent=sum(2);
+  document.getElementById('s-live').textContent=sum(5);
+  document.getElementById('updated').textContent=`進度同步自 Notion，最後更新 ${data.updated}`;
+}
+render(fallback);
+fetch('data.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(d=>{if(d&&d.videos&&d.videos.length)render(d);}).catch(()=>{});
 
 const routes={home:'v-home',content:'v-content','yt-planner':'v-yt-planner'};
 function route(){
