@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Golden APPLE 中控台</title>
+<link rel="icon" href="logo.png">
+<style>html{color-scheme:light}img{max-width:100%}[hidden]{display:none!important}</style>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
+<style>
+:root{
+  --bg:#FFF7F1; --card:#FFFDFB; --card2:#F8EDE5; --line:#EBDCD3;
+  --ink:#5A3733; --navy:#1C3854; --rose:#CE9686; --rose-deep:#B9765F; --rose-soft:#F1DCD2; --muted:#9C8580;
+  --ok:#5F8A6B; --ok-bg:#E6F0E8; --wait:#D5C3BA;
+  --shadow:0 1px 2px rgba(102,61,56,.05),0 14px 36px -20px rgba(102,61,56,.28);
+  --serif:"Cormorant Garamond",Georgia,serif; --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --logo-filter:none;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){color-scheme:dark;
+  --bg:#14233A; --card:#1C3049; --card2:#243A57; --line:#2F4763; --ink:#F3E6DE; --navy:#F7EFE9; --rose:#D9A48F; --rose-deep:#E4B7A5; --rose-soft:#3A4D66; --muted:#A99A94; --ok:#9CCBA8; --ok-bg:#24413A; --wait:#4E6480; --shadow:0 14px 36px -20px rgba(0,0,0,.6); --logo-filter:brightness(0) invert(.94) sepia(.2);}}
+:root[data-theme="dark"]{color-scheme:dark;
+  --bg:#14233A; --card:#1C3049; --card2:#243A57; --line:#2F4763; --ink:#F3E6DE; --navy:#F7EFE9; --rose:#D9A48F; --rose-deep:#E4B7A5; --rose-soft:#3A4D66; --muted:#A99A94; --ok:#9CCBA8; --ok-bg:#24413A; --wait:#4E6480; --shadow:0 14px 36px -20px rgba(0,0,0,.6); --logo-filter:brightness(0) invert(.94) sepia(.2);}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:1180px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px}
+.brand img{height:44px;width:auto;filter:var(--logo-filter)}
+.brand .sub{font-family:var(--serif);font-size:13px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);border-left:1px solid var(--line);padding-left:16px;line-height:1.2}
+.meta{font-size:12px;color:var(--muted);letter-spacing:.06em;font-variant-numeric:tabular-nums}
+.crumbs{display:flex;gap:10px;align-items:center;font-size:13px;color:var(--muted);padding:28px 0 8px;flex-wrap:wrap}
+.crumbs a{text-decoration:none;color:var(--muted)}.crumbs a:hover{color:var(--rose-deep)}
+.crumbs .cur{color:var(--navy)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4vw,46px);color:var(--navy);margin:4px 0 6px;line-height:1.12;text-wrap:balance}
+h2.sec{font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.26em;text-transform:uppercase;color:var(--rose-deep);margin:40px 0 14px;display:flex;align-items:center;gap:14px}
+h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
+.lede{font-size:15px;color:var(--muted);max-width:62ch;margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;text-decoration:none;position:relative;transition:transform .18s ease,border-color .18s ease;color:inherit}
+.card:hover{transform:translateY(-2px);border-color:var(--rose)}
+.card:focus-visible{outline:2px solid var(--rose);outline-offset:3px}
+.card.soon{opacity:.6}.card.soon:hover{transform:none;border-color:var(--line)}
+.ico{width:64px;height:64px;border-radius:18px;background:var(--rose-soft);display:grid;place-items:center;color:var(--rose-deep)}
+.ico svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.card .t{font-size:19px;font-weight:500;color:var(--navy);line-height:1.3}
+.card .d{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
+.card .f{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding-top:8px;border-top:1px dashed var(--line)}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;letter-spacing:.08em;border:1px solid var(--line);color:var(--muted)}
+.pill.on{background:var(--ok-bg);color:var(--ok);border-color:transparent}
+.pill.plan{background:var(--card2);color:var(--rose-deep);border-color:transparent}
+/* business unit blocks */
+.unit{background:var(--card2);border-radius:20px;padding:24px;margin-bottom:22px}
+.unit .uh{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap}
+.unit .uh .n{font-family:var(--serif);font-size:28px;color:var(--navy);font-weight:500}
+.unit .uh .s{font-size:13px;color:var(--muted)}
+/* pipeline */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch;margin:6px 0 10px}
+@media (max-width:900px){.flow{grid-template-columns:1fr}}
+.step{position:relative;padding:0 14px 0 0}
+@media (max-width:900px){.step{padding:0 0 22px}}
+.step .card{height:100%}
+.step::after{content:"";position:absolute;right:-3px;top:64px;width:20px;height:20px;border-top:1.5px solid var(--rose);border-right:1.5px solid var(--rose);transform:rotate(45deg);opacity:.8}
+.step:last-child::after{display:none}
+@media (max-width:900px){.step::after{right:auto;left:50%;top:auto;bottom:4px;transform:rotate(135deg) translateX(-50%)}}
+.step .num{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--rose-deep)}
+.step .out{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--card2);color:var(--ink);white-space:nowrap;display:inline-block}
+/* daily strip */
+.day{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+@media (max-width:760px){.day{grid-template-columns:repeat(2,1fr)}}
+.day .slot{border-left:2px solid var(--rose);padding-left:12px}
+.day .slot .h{font-family:var(--serif);font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
+.day .slot .w{font-size:13px;margin-top:6px}
+.day .slot .who{font-size:11.5px;color:var(--muted)}
+/* employee page */
+.emp{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+@media (max-width:760px){.emp{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
+.panel h2{font-family:var(--serif);font-weight:500;font-size:24px;color:var(--navy);margin:0 0 4px}
+.panel h3{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--rose-deep);margin:18px 0 8px;font-weight:500}
+.panel p{margin:0 0 8px;font-size:14px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;font-size:14px}
+.kv b{font-weight:500;color:var(--muted)}
+.links{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.btn{display:inline-block;padding:9px 16px;border-radius:999px;background:var(--navy);color:var(--bg);text-decoration:none;font-size:13px;letter-spacing:.04em}
+.btn.ghost{background:transparent;color:var(--navy);border:1px solid var(--line)}
+.btn:hover{opacity:.9}
+.hero{display:flex;gap:22px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:var(--shadow);margin-bottom:18px}
+.hero .ico{width:92px;height:92px;border-radius:26px;flex:none}.hero .ico svg{width:48px;height:48px}
+.hero .t{font-size:22px;font-weight:500;color:var(--navy)}
+.hero .d{font-size:14px;color:var(--muted);max-width:60ch}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px 0}
+@media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{background:var(--card2);border-radius:12px;padding:14px 16px}
+.stat .n{font-family:var(--serif);font-size:34px;color:var(--navy);line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-size:12px;color:var(--muted);letter-spacing:.06em;margin-top:4px}
+.tblwrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow)}
+table{border-collapse:collapse;width:100%;min-width:880px;font-size:13.5px}
+th{font-weight:500;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);text-align:left;padding:14px;border-bottom:1px solid var(--line);background:var(--card2);white-space:nowrap}
+td{padding:13px 14px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+td.num{font-family:var(--serif);font-size:18px;color:var(--rose-deep);font-variant-numeric:tabular-nums;width:48px}
+td.title a{text-decoration:none;color:var(--navy);font-weight:500}
+td.title a:hover{color:var(--rose-deep)}
+td.title small{display:block;color:var(--muted);font-weight:400;font-size:12px;margin-top:2px}
+td.c{text-align:center;width:64px}
+.dot{display:inline-block;width:18px;height:18px;border-radius:50%;border:1.5px solid var(--wait);vertical-align:middle}
+.dot.on{background:var(--ok);border-color:var(--ok);position:relative}
+.dot.on::after{content:"";position:absolute;left:5px;top:2px;width:5px;height:9px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.note{font-size:12.5px;color:var(--muted);margin-top:14px}
+.view{display:none}.view.active{display:block}
+footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;border-top:1px solid var(--line);padding-top:16px}
+@media (prefers-reduced-motion:reduce){.card{transition:none}}
+</style>
+</head>
+<body>
+
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 3v9l6 4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/><path d="M4 20l1-4"/><path d="M14 20h6"/></symbol>
+  <symbol id="i-cut" viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M8.5 8 20 19"/><path d="M8.5 16 20 5"/><path d="M12 12h.01"/></symbol>
+  <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M12 3c3 2 5 6 5 10l-2 2H9l-2-2c0-4 2-8 5-10z"/><path d="M9 15l-3 2 1-4"/><path d="M15 15l3 2-1-4"/><path d="M10 19c0 2 1 3 2 3s2-1 2-3"/><circle cx="12" cy="10" r="1.5"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 16l4-5 3 3 5-7"/><path d="M15 7h3v3"/></symbol>
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M3 15h18M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-mega" viewBox="0 0 24 24"><path d="M4 10v4h3l7 4V6l-7 4z"/><path d="M17 9a4 4 0 010 6"/><path d="M6 14l1 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4z"/><path d="M20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></symbol>
+  <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 4a3 3 0 010 6"/><path d="M15 14a6 6 0 016 6"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-4-3-9 0-8 6 1 5 4 8 6 8 1 0 2-1 2-1s1 1 2 1c2 0 5-3 6-8 1-6-4-9-8-6z"/><path d="M12 7c0-2 1-3 3-4"/></symbol>
+</svg>
+
+<header><div class="bar">
+  <div class="brand"><a href="#home" aria-label="回中控台首頁"><img src="logo.png" alt="Golden APPLE"></a><div class="sub">Operations<br>Control Center</div></div>
+  <div class="meta" id="clock"></div>
+</div></header>
+
+<div class="wrap">
+
+<!-- HOME -->
+<section class="view active" id="v-home">
+  <div class="crumbs"><span class="cur">中控台</span></div>
+  <h1>兩個事業體，四個部門</h1>
+  <p class="lede">每個部門裡是一位一位的 AI 員工，每位員工負責一個環節。點進部門看流程，點進員工看她做到哪裡。</p>
+
+  <div class="unit">
+    <div class="uh"><div class="n">個人課程經營</div><div class="s">Golden APPLE 品牌、體驗課、大師班與整合課</div></div>
+    <div class="grid">
+      <a class="card" href="#content">
+        <div class="ico"><svg><use href="#i-film"/></svg></div>
+        <div class="t">內容部</div>
+        <div class="d">從資訊收集到數據優化的每日內容產線：長文、Podcast、YT 影片、短影音。</div>
+        <div class="f"><span>5 個環節 · 1 位員工上線</span><span class="pill on">運作中</span></div>
+      </a>
+      <div class="card soon">
+        <div class="ico"><svg><use href="#i-mega"/></svg></div>
+        <div class="t">課程廣告部</div>
+        <div class="d">體驗課與課程的廣告素材、投放與名單追蹤。</div>
+        <div class="f"><span>0 位員工</span><span class="pill plan">籌備中</span></div>
+      </div>
+      <div class="card soon">
+        <div class="ico"><svg><use href="#i-book"/></svg></div>
+        <div class="t">課程內容規劃部</div>
+        <div class="d">體驗課、大師班、整合課的教材、講義、簡報與學員手冊。</div>
+        <div class="f"><span>0 位員工</span><span class="pill plan">籌備中</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="unit">
+    <div class="uh"><div class="n">廣告公司</div><div class="s">每月服務數十家投放客戶</div></div>
+    <div class="grid">
+      <div class="card soon">
+        <div class="ico"><svg><use href="#i-hand"/></svg></div>
+        <div class="t">行銷客戶部</div>
+        <div class="d">客戶的文案、素材、投放與報表。</div>
+        <div class="f"><span>0 位員工</span><span class="pill plan">籌備中</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEPARTMENT: CONTENT -->
+<section class="view" id="v-content">
+  <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#home">個人課程經營</a><span>/</span><span class="cur">內容部</span></div>
+  <h1>內容部</h1>
+  <p class="lede">一條每天跑一次的產線。上一位員工做完，交給下一位。點任何一格看那位員工的資料。</p>
+
+  <h2 class="sec">產線五環節</h2>
+  <div class="flow">
+    <div class="step"><div class="card soon">
+      <div class="num">01</div><div class="ico"><svg><use href="#i-radar"/></svg></div>
+      <div class="t">資訊收集</div>
+      <div class="d">每天掃描歐美 YouTube、小紅書與台灣同主題內容，挑出流量高的題目與框架，整理成當週題目庫。</div>
+      <div class="out"><span class="tag">題目庫</span><span class="tag">框架出處</span></div>
+      <div class="f"><span>員工待上線</span><span class="pill plan">籌備中</span></div>
+    </div></div>
+    <div class="step"><a class="card" href="#yt-planner">
+      <div class="num">02</div><div class="ico"><svg><use href="#i-pen"/></svg></div>
+      <div class="t">內容產出</div>
+      <div class="d">把題目庫按時程做成 SEO 長文、Podcast、YT 長影音講稿與短影音腳本。目前上線的是 YT 影片企劃。</div>
+      <div class="out"><span class="tag">長文</span><span class="tag">Podcast</span><span class="tag">YT 講稿</span><span class="tag">短影音</span></div>
+      <div class="f"><span>YT 影片企劃 · 12 支</span><span class="pill on">運作中</span></div>
+    </a></div>
+    <div class="step"><div class="card soon">
+      <div class="num">03</div><div class="ico"><svg><use href="#i-cut"/></svg></div>
+      <div class="t">剪輯</div>
+      <div class="d">收到拍攝檔，剪成長影音成片，並依腳本切出認知與轉換兩支短影音。</div>
+      <div class="out"><span class="tag">長片成片</span><span class="tag">短片兩支</span></div>
+      <div class="f"><span>員工待上線</span><span class="pill plan">籌備中</span></div>
+    </div></div>
+    <div class="step"><div class="card soon">
+      <div class="num">04</div><div class="ico"><svg><use href="#i-rocket"/></svg></div>
+      <div class="t">上架與發布</div>
+      <div class="d">封面、標題、資訊欄、章節，排定 YouTube 發布，並產出各平台的公告文。</div>
+      <div class="out"><span class="tag">封面</span><span class="tag">標題</span><span class="tag">資訊欄</span><span class="tag">平台公告</span></div>
+      <div class="f"><span>員工待上線</span><span class="pill plan">籌備中</span></div>
+    </div></div>
+    <div class="step"><div class="card soon">
+      <div class="num">05</div><div class="ico"><svg><use href="#i-chart"/></svg></div>
+      <div class="t">數據優化</div>
+      <div class="d">追平均觀看時長與體驗課報名來源，回饋給資訊收集，決定下一輪題目。</div>
+      <div class="out"><span class="tag">觀看時長</span><span class="tag">報名來源</span></div>
+      <div class="f"><span>員工待上線</span><span class="pill plan">籌備中</span></div>
+    </div></div>
+  </div>
+
+  <h2 class="sec">每日節奏</h2>
+  <div class="day">
+    <div class="slot"><div class="h">07:00</div><div class="w">掃描與收集</div><div class="who">資訊收集</div></div>
+    <div class="slot"><div class="h">09:00</div><div class="w">產出當日內容</div><div class="who">內容產出</div></div>
+    <div class="slot"><div class="h">13:00</div><div class="w">剪輯與切片</div><div class="who">剪輯</div></div>
+    <div class="slot"><div class="h">16:00</div><div class="w">上架與公告</div><div class="who">上架與發布</div></div>
+    <div class="slot"><div class="h">21:00</div><div class="w">看數據，回饋題目</div><div class="who">數據優化</div></div>
+  </div>
+  <p class="note">時段是建議值，等各環節員工上線後可以改成排程任務自動跑。</p>
+</section>
+
+<!-- EMPLOYEE: YT PLANNER -->
+<section class="view" id="v-yt-planner">
+  <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#content">內容部</a><span>/</span><span class="cur">YT 影片企劃</span></div>
+  <div class="hero">
+    <div class="ico"><svg><use href="#i-pen"/></svg></div>
+    <div><div class="t">YT 影片企劃</div><div class="d">內容部第二環節「內容產出」的員工。為有專業、沒聲量的人寫十到十二分鐘的乾貨型長影音講稿。頻道一句話：讓客人指名妳，不是比價妳。</div></div>
+  </div>
+
+  <div class="emp">
+    <div class="panel">
+      <h2>員工卡</h2>
+      <div class="kv">
+        <b>部門</b><span>內容部 · 內容產出</span>
+        <b>技能名稱</b><span>yt-video-planner</span>
+        <b>對誰講話</b><span>有專業、沒聲量、一直被比價的人，六大族群 A 到 F</span>
+        <b>轉換目標</b><span>四小時個人品牌體驗課</span>
+        <b>交付物</b><span>講稿 Word 與純文字、Notion 中控台一列、每支可切兩支短影音</span>
+        <b>交給誰</b><span>拍攝後交「剪輯」</span>
+      </div>
+      <h3>講稿標準</h3>
+      <p>每支只教一個完整框架，保留原版的變數、數字與步驟，交代出處的重量。開場不打招呼、不自我介紹，第一句反直覺或對號入座，第二句講清楚看完得到什麼。一個族群案例從頭套到尾，帶觀眾當場做一次，結尾一句話接體驗課。</p>
+      <div class="links">
+        <a class="btn" href="https://app.notion.com/p/a3158f1fe9f646b1906f7d934866536a" target="_blank" rel="noopener">開啟 Notion 中控台</a>
+        <a class="btn ghost" href="https://app.notion.com/p/3e2428c593f680ac9753defad8914919" target="_blank" rel="noopener">族群受眾表</a>
+      </div>
+    </div>
+    <div class="panel">
+      <h2>六大族群</h2>
+      <div class="kv">
+        <b>A</b><span>一人工作室與微型服務業，主力</span>
+        <b>B</b><span>才藝與補教，蘋果的主場</span>
+        <b>C</b><span>高專業證照，單價最高，語氣要收</span>
+        <b>D</b><span>業務與通路，最好的擴散者</span>
+        <b>E</b><span>實體店老闆，二代接班是甜蜜點</span>
+        <b>F</b><span>轉型中的人，入門帶，做情感型內容</span>
+      </div>
+      <h3>做法</h3>
+      <p>方法論影片用狀態開場不點名職業；影片內的例子每支輪一個族群；示範影片才在標題寫單一職業。</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="n" id="s-script">12</div><div class="l">講稿完成</div></div>
+    <div class="stat"><div class="n" id="s-shot">0</div><div class="l">拍攝完成</div></div>
+    <div class="stat"><div class="n" id="s-edit">0</div><div class="l">剪輯完成</div></div>
+    <div class="stat"><div class="n" id="s-live">0</div><div class="l">已上架</div></div>
+  </div>
+
+  <div class="tblwrap">
+    <table id="videos">
+      <thead><tr><th>#</th><th>影片</th><th>族群</th><th>講稿</th><th>拍攝</th><th>剪輯</th><th>封面</th><th>資訊欄</th><th>上架</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+  <p class="note">進度以 Notion 中控台為準，這一頁目前是快照。點影片名稱可直接開該支的講稿頁。</p>
+</section>
+
+<footer><span>Golden APPLE · 曾蘋果老師</span><span>內容部 v2</span></footer>
+</div>
+
+<script>
+const videos=[
+ [1,"一句話說清楚妳是誰，三格公式加三個檢查","一句話定位公式加三個測試",["全部"],"3e6428c593f68189bbfefbe9cee4ea76"],
+ [2,"自測，妳是哪一種個人品牌，選錯了怎麼講都沒人聽","三種 IP 自測",["全部"],"3e6428c593f68147899be88e22a767da"],
+ [3,"為什麼妳的貼文沒人回，因為妳只對百分之三的人講話","買家金字塔，先教再賣",["全部"],"3e6428c593f68179b710ff75599ecced"],
+ [4,"為什麼妳的課永遠只能收六百","價值公式加定價對話",["A","B","C"],"3e6428c593f681f6a630f3db84d46d3c"],
+ [5,"不用投廣告，前十個客人從這四條路來","四條找客路加訊息結構",["A","D","E"],"3e6428c593f681dfb5c2f4538b89723a"],
+ [6,"前三秒沒抓住就滑掉了，五種開頭公式加一個檢查","鉤住留住回報",["全部"],"3e6428c593f681348794e658d6da734f"],
+ [7,"每週發什麼永遠想不出來，四種內容加一變十","做想夢人加一變十",["全部"],"3e6428c593f6819d81afd50010661285"],
+ [8,"妳的故事講了沒人在聽，因為妳把自己講成了主角","StoryBrand 七步",["全部"],"3e6428c593f68167bd22de2aee416214"],
+ [9,"專業人士做內容不俗氣的三條規則，還有四種證據怎麼排","三規則加四種證據",["C"],"3e6428c593f681d89518eac613ca49b5"],
+ [10,"妳的第二收入早就在手上，兩張清單加一座階梯","技能疊加加價值階梯",["B","F"],"3e6428c593f681da83a1e284408d940d"],
+ [11,"白天工作晚上備課，一週五小時做品牌的排法","只碰一次加批次拍攝",["A","B"],"3e6428c593f681f58532f4589196d6c0"],
+ [12,"我這個年紀還來得及嗎，十個自查加一個順序","十種毒加先是再做再有",["F"],"3e6428c593f681159583dc44f7d82c4b"]
+];
+const progress={};videos.forEach(v=>progress[v[0]]=[1,0,0,0,0,0]);
+const tb=document.querySelector('#videos tbody');
+const dot=v=>`<span class="dot${v?' on':''}"></span>`;
+videos.forEach(([n,t,f,g,id])=>{
+  const p=progress[n];const tr=document.createElement('tr');
+  tr.innerHTML=`<td class="num">${String(n).padStart(2,'0')}</td>
+  <td class="title"><a href="https://app.notion.com/p/${id}" target="_blank" rel="noopener">${t}</a><small>${f}</small></td>
+  <td>${g.map(x=>`<span class="tag">${x}</span>`).join(' ')}</td>
+  <td class="c">${dot(p[0])}</td><td class="c">${dot(p[1])}</td><td class="c">${dot(p[2])}</td><td class="c">${dot(p[3])}</td><td class="c">${dot(p[4])}</td><td class="c">${dot(p[5])}</td>`;
+  tb.appendChild(tr);
+});
+const sum=i=>Object.values(progress).reduce((a,p)=>a+p[i],0);
+document.getElementById('s-script').textContent=sum(0);
+document.getElementById('s-shot').textContent=sum(1);
+document.getElementById('s-edit').textContent=sum(2);
+document.getElementById('s-live').textContent=sum(5);
+
+const routes={home:'v-home',content:'v-content','yt-planner':'v-yt-planner'};
+function route(){
+  const h=(location.hash||'#home').slice(1);const id=routes[h]||'v-home';
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===id));
+  window.scrollTo({top:0});
+}
+window.addEventListener('hashchange',route);route();
+function clock(){
+  const d=new Date();const w='日一二三四五六'[d.getDay()];
+  document.getElementById('clock').textContent=`${d.getFullYear()}/${String(d.getMonth()+1).padStart(2,'0')}/${String(d.getDate()).padStart(2,'0')} 週${w} ${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`;
+}
+clock();setInterval(clock,30000);
+</script>
+
+</body>
+</html>
