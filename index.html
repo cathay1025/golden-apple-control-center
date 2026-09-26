@@ -6,6 +6,7 @@
 <title>Golden APPLE 中控台</title>
 <link rel="icon" href="logo.png">
 <style>html{color-scheme:light}img{max-width:100%}[hidden]{display:none!important}</style>
+
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Noto+Sans+TC:wght@300;400;500;700&display=swap">
 <style>
 :root{
@@ -47,14 +48,16 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 .card .t{font-size:19px;font-weight:500;color:var(--navy);line-height:1.3}
 .card .d{font-size:13px;color:var(--muted);line-height:1.6;flex:1}
 .card .f{display:flex;justify-content:space-between;align-items:center;font-size:12px;color:var(--muted);padding-top:8px;border-top:1px dashed var(--line)}
-.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;letter-spacing:.08em;border:1px solid var(--line);color:var(--muted)}
+.pill{display:inline-block;white-space:nowrap;padding:2px 10px;border-radius:999px;font-size:11px;letter-spacing:.08em;border:1px solid var(--line);color:var(--muted)}
 .pill.on{background:var(--ok-bg);color:var(--ok);border-color:transparent}
 .pill.warn{background:#F6E3C8;color:#9A6420;border-color:transparent}
 .pill.plan{background:var(--card2);color:var(--rose-deep);border-color:transparent}
+/* business unit blocks */
 .unit{background:var(--card2);border-radius:20px;padding:24px;margin-bottom:22px}
 .unit .uh{display:flex;align-items:baseline;gap:14px;margin-bottom:16px;flex-wrap:wrap}
 .unit .uh .n{font-family:var(--serif);font-size:28px;color:var(--navy);font-weight:500}
 .unit .uh .s{font-size:13px;color:var(--muted)}
+/* pipeline */
 .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch;margin:6px 0 10px}
 @media (max-width:900px){.flow{grid-template-columns:1fr}}
 .step{position:relative;padding:0 14px 0 0}
@@ -66,12 +69,14 @@ h2.sec::after{content:"";flex:1;height:1px;background:var(--line)}
 .step .num{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--rose-deep)}
 .step .out{display:flex;flex-wrap:wrap;gap:6px}
 .tag{font-size:11px;padding:3px 9px;border-radius:6px;background:var(--card2);color:var(--ink);white-space:nowrap;display:inline-block}
+/* daily strip */
 .day{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
 @media (max-width:760px){.day{grid-template-columns:repeat(2,1fr)}}
 .day .slot{border-left:2px solid var(--rose);padding-left:12px}
 .day .slot .h{font-family:var(--serif);font-size:20px;color:var(--navy);font-variant-numeric:tabular-nums;line-height:1}
 .day .slot .w{font-size:13px;margin-top:6px}
 .day .slot .who{font-size:11.5px;color:var(--muted)}
+/* employee page */
 .emp{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
 @media (max-width:760px){.emp{grid-template-columns:1fr}}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:var(--shadow)}
@@ -114,6 +119,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
 </head>
 <body>
 
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><path d="M12 3v9l6 4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></symbol>
   <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l4-1 10-10-3-3L5 16z"/><path d="M13 7l3 3"/><path d="M4 20l1-4"/><path d="M14 20h6"/></symbol>
@@ -123,7 +129,9 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18M3 15h18M8 5v14M16 5v14"/></symbol>
   <symbol id="i-mega" viewBox="0 0 24 24"><path d="M4 10v4h3l7 4V6l-7 4z"/><path d="M17 9a4 4 0 010 6"/><path d="M6 14l1 5"/></symbol>
   <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5h7a2 2 0 012 2v13a2 2 0 00-2-2H4z"/><path d="M20 5h-7a2 2 0 00-2 2v13a2 2 0 012-2h7z"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 20a2 2 0 004 0"/><path d="M12 3v2"/></symbol>
   <symbol id="i-hand" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0112 0"/><path d="M16 4a3 3 0 010 6"/><path d="M15 14a6 6 0 016 6"/></symbol>
+  <symbol id="i-apple" viewBox="0 0 24 24"><path d="M12 7c-4-3-9 0-8 6 1 5 4 8 6 8 1 0 2-1 2-1s1 1 2 1c2 0 5-3 6-8 1-6-4-9-8-6z"/><path d="M12 7c0-2 1-3 3-4"/></symbol>
 </svg>
 
 <header><div class="bar">
@@ -133,10 +141,35 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
 
 <div class="wrap">
 
+<!-- HOME -->
 <section class="view active" id="v-home">
   <div class="crumbs"><span class="cur">中控台</span></div>
   <h1>兩個事業體，四個部門</h1>
   <p class="lede">每個部門裡是一位一位的 AI 員工，每位員工負責一個環節。點進部門看流程，點進員工看她做到哪裡。</p>
+
+  <div class="unit sec-unit">
+    <div class="uh"><div class="n">秘書室</div><div class="s">有任何問題或意見，寫在這裡就好，小秘書會找到對的員工處理</div></div>
+    <div class="grid">
+      <a class="card" href="https://app.notion.com/p/eaa91078d1554e10b8cd66ad6f55150a" target="_blank" rel="noopener">
+        <div class="ico"><svg><use href="#i-bell"/></svg></div>
+        <div class="t">交辦一件事</div>
+        <div class="d">看了講稿覺得哪裡不對、題目挑得不準、想改一條規則，寫一句話就好。小秘書每天 9 點、13 點、18 點來收，處理完推播給妳。</div>
+        <div class="f"><span>秘書交辦 · Notion</span><span class="pill on">運作中</span></div>
+      </a>
+      <a class="card" href="https://app.notion.com/p/3e6428c593f681708eb3e43668d931de" target="_blank" rel="noopener">
+        <div class="ico"><svg><use href="#i-book"/></svg></div>
+        <div class="t">員工規則補充</div>
+        <div class="d">妳交代過「以後都要這樣」的規則會記在這裡，每位員工開工前都會先讀自己那一節。</div>
+        <div class="f"><span>規則頁 · Notion</span><span class="pill on">運作中</span></div>
+      </a>
+      <a class="card" href="https://app.notion.com/p/63662548c67449be8d0e686a22a19c2b" target="_blank" rel="noopener">
+        <div class="ico"><svg><use href="#i-radar"/></svg></div>
+        <div class="t">題目庫</div>
+        <div class="d">資訊收集每天早上七點送來的題目，勾「採用」企劃部才會寫。</div>
+        <div class="f"><span>每日 07:00</span><span class="pill on">運作中</span></div>
+      </a>
+    </div>
+  </div>
 
   <div class="unit">
     <div class="uh"><div class="n">個人課程經營</div><div class="s">Golden APPLE 品牌、體驗課、大師班與整合課</div></div>
@@ -145,7 +178,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
         <div class="ico"><svg><use href="#i-film"/></svg></div>
         <div class="t">內容部</div>
         <div class="d">從資訊收集到數據優化的每日內容產線：長文、Podcast、YT 影片、短影音。</div>
-        <div class="f"><span>5 個環節 · 1 位員工上線</span><span class="pill on">運作中</span></div>
+        <div class="f"><span>5 個環節 · 2 位員工上線</span><span class="pill on">運作中</span></div>
       </a>
       <div class="card soon">
         <div class="ico"><svg><use href="#i-mega"/></svg></div>
@@ -175,6 +208,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   </div>
 </section>
 
+<!-- DEPARTMENT: CONTENT -->
 <section class="view" id="v-content">
   <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#home">個人課程經營</a><span>/</span><span class="cur">內容部</span></div>
   <h1>內容部</h1>
@@ -182,13 +216,13 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
 
   <h2 class="sec">產線五環節</h2>
   <div class="flow">
-    <div class="step"><div class="card soon">
+    <div class="step"><a class="card" href="https://app.notion.com/p/63662548c67449be8d0e686a22a19c2b" target="_blank" rel="noopener">
       <div class="num">01</div><div class="ico"><svg><use href="#i-radar"/></svg></div>
       <div class="t">資訊收集</div>
-      <div class="d">每天掃描歐美 YouTube、小紅書與台灣同主題內容，挑出流量高的題目與框架，整理成當週題目庫。</div>
-      <div class="out"><span class="tag">題目庫</span><span class="tag">框架出處</span></div>
-      <div class="f"><span>員工待上線</span><span class="pill plan">籌備中</span></div>
-    </div></div>
+      <div class="d">每天早上七點掃描歐美與台灣同主題高流量內容、妳的 Google Drive 資料夾與前一天的對話，挑五到八題寫進題目庫。</div>
+      <div class="out"><span class="tag">題目庫</span><span class="tag">框架出處</span><span class="tag">台灣版切角</span></div>
+      <div class="f"><span>topic-scout · 每日 07:00</span><span class="pill on">運作中</span></div>
+    </a></div>
     <div class="step"><a class="card" href="#yt-planner">
       <div class="num">02</div><div class="ico"><svg><use href="#i-pen"/></svg></div>
       <div class="t">內容產出</div>
@@ -230,6 +264,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   <p class="note">時段是建議值，等各環節員工上線後可以改成排程任務自動跑。</p>
 </section>
 
+<!-- EMPLOYEE: YT PLANNER -->
 <section class="view" id="v-yt-planner">
   <div class="crumbs"><a href="#home">中控台</a><span>/</span><a href="#content">內容部</a><span>/</span><span class="cur">YT 影片企劃</span></div>
   <div class="hero">
@@ -286,7 +321,7 @@ footer{margin-top:48px;font-size:12px;color:var(--muted);display:flex;justify-co
   <p class="note" id="updated">進度同步自 Notion。</p><p class="note">講稿欄是講稿狀態（草稿、待修、定稿），其他欄位是各環節的完成勾選。點影片名稱可直接開該支在 Notion 的講稿頁。</p>
 </section>
 
-<footer><span>Golden APPLE · 曾蘋果老師</span><span>內容部 v2</span></footer>
+<footer><span>Golden APPLE · 曾蘋果老師</span><span>內容部 v3</span></footer>
 </div>
 
 <script>
