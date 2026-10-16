@@ -1,6 +1,48 @@
 {
- "updated": "2026/10/16 08:01",
+ "updated": "2026/10/16 13:21",
  "videos": [
+  {
+   "id": "3fb428c593f68073accce7290c462dc9",
+   "n": 0,
+   "title": "廣告短影片測試",
+   "framework": "",
+   "groups": [],
+   "line": "",
+   "status": "未開始",
+   "scriptState": "",
+   "youtube": "",
+   "publishDate": "",
+   "flags": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "shorts": false
+  },
+  {
+   "id": "3fb428c593f680f2900cc8b397966f71",
+   "n": 0,
+   "title": "",
+   "framework": "",
+   "groups": [],
+   "line": "",
+   "status": "未開始",
+   "scriptState": "",
+   "youtube": "",
+   "publishDate": "",
+   "flags": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+   ],
+   "shorts": false
+  },
   {
    "id": "3e6428c593f68189bbfefbe9cee4ea76",
    "n": 1,
